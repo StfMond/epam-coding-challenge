@@ -9,7 +9,7 @@ Tech - VanillaJs - Nodejs
 
 ## Install
 
-    $ git clone https://github.com/YOUR_USERNAME/PROJECT_TITLE or UnZip Folder
+    $ git clone https://github.com/StfMond/epam-coding-challenge or UnZip Folder
     $ cd epam-coding-challenge
     $ npm install
 
