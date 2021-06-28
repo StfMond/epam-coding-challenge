@@ -1,0 +1,14 @@
+CREATE fruits
+CREATE vegetables
+CREATE grains
+CREATE fruits/apples
+CREATE fruits/apples/fuji
+CREATE grains/squash
+MOVE grains/squash vegetables
+LIST
+ fruits 
+  apples 
+   fuji 
+ vegetables 
+  squash 
+ grains

@@ -1,5 +1,5 @@
-import { IFolderManager } from "../model/IFolderManager";
-import { ResponseFolder } from "../model/responseFolder";
+import { IFolderManager } from '../model/IFolderManager';
+import { ResponseFolder } from '../model/responseFolder';
 
 export class FolderManager implements IFolderManager {
     createItem(folders: [], keys: []): object {
@@ -14,9 +14,9 @@ export class FolderManager implements IFolderManager {
         return folder;
     };
 
-    moveItem(folders: [], keys: [], folderDest: object): [] {
-        let keyTo = keys[keys.length - 1];
-        folders[keyTo] = Object.assign(folders[keyTo], folderDest);
+    moveItem(folders: [], keysDest: string[], folderToMove: object): [] {
+        let keyTo = keysDest[keysDest.length - 1];
+        folders[keyTo] = Object.assign(folders[keyTo], folderToMove);
         return folders;
     };
 
@@ -31,14 +31,13 @@ export class FolderManager implements IFolderManager {
     deleteFolder(folders: [], path: string[]): ResponseFolder {
         let validItem = this.findNestedItem(folders, path, true);
 
-        if (!validItem.isValid)
-            validItem.message = `Cannot delete  ${path.join('/')} - ${validItem.key} does not exist`;
-        else {
-            let lastKey = path[path.length - 1];
-            validItem.files = this.removeItem(folders, lastKey);
-
+        if (!validItem.isValid) {
+            validItem.message = `Cannot delete ${path.join('/')} - ${validItem.key} does not exist`;
+            return validItem;
         }
 
+        let lastKey = path[path.length - 1];
+        validItem.files = this.removeItem(folders, lastKey);
         return validItem;
     }
 
@@ -52,9 +51,8 @@ export class FolderManager implements IFolderManager {
             return { key: path[0], item: null, isValid: false };
 
         if (path.length == 1) {
-            let files = [];
-            if (deleteItem) files = this.removeItem(foldersObj, path[0]);
-            return { key: path[0], item: { [path[0]]: obj || {} }, isValid: true, files };
+            if (deleteItem) this.removeItem(foldersObj, path[0]);
+            return { key: path[0], item: { [path[0]]: obj || {} }, isValid: true };
         }
 
         path.shift();

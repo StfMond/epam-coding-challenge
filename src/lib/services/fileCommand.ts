@@ -1,6 +1,6 @@
-import { IFolderManager } from "../model/IFolderManager";
-import { Instruction } from "../model/instruction";
-import OutputFileLog from "./outputFileLog";
+import { IFolderManager } from '../model/IFolderManager';
+import { Instruction } from '../model/instruction';
+import OutputFileLog from './outputFileLog';
 
 class FileCommand {
     private _folderManager: IFolderManager;
@@ -12,7 +12,7 @@ class FileCommand {
     }
 
     public executeCommand(commandLine) {
-        let inst = commandLine.split(" ");
+        let inst = commandLine.split(' ');
         let parent = inst[2] !== undefined ? inst[2].split('/') : {};
         let keys = inst[1] !== undefined ? inst[1].split('/') : {};
         let command = (<any>Instruction)[inst[0]];
@@ -29,7 +29,10 @@ class FileCommand {
                 this.files = this._folderManager.moveItem(this.files, parent, object.item);
                 break;
             case Instruction.LIST:
-                let listItems = JSON.stringify(this.files, null, 1).replace(/[{}:,^"]/g, '').replace(/(^[ \t]*\n)/gm, '');
+                let listItems = JSON.stringify(this.files, null, 1)
+                    .replace(/[{}:,^"]/g, '')
+                    .replace(/(^[ \t]*\n)/gm, '')
+                    .trimEnd();
                 output = listItems;
                 break;
             case Instruction.DELETE:

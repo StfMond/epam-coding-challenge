@@ -4,20 +4,28 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node ./dist/directories.js",
-    "tsc": "tsc"
+    "start": "node ./dist/lib/services/directories.js",
+    "build": "tsc",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "lint": "eslint . --ext .ts"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "jest": "^27.0.4",
-    "mocha": "^9.0.1",
-    "nodemon": "^2.0.7"
+    "@types/jest": "^26.0.23",
+    "@typescript-eslint/eslint-plugin": "^4.28.1",
+    "@typescript-eslint/parser": "^4.28.1",
+    "eslint": "^7.29.0",
+    "jest": "^27.0.5",
+    "nodemon": "^2.0.7",
+    "nyc": "^15.1.0",
+    "ts-jest": "^27.0.3",
+    "ts-node": "^10.0.0",
+    "typescript": "^4.3.4"
   },
   "dependencies": {
     "config": "^3.3.6",
-    "dotenv": "^10.0.0",
-    "line-reader": "^0.4.0",
-    "typescript": "^4.3.4"
+    "dotenv": "^10.0.0"
   }
 }

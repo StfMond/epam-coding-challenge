@@ -35,4 +35,17 @@ LIST
 
 ## Running the project
 
-    $ npm start
+    $ npm run build
+    $ npm run start
+
+## Test Execution
+
+    $ npm run test
+
+## Coverage Report
+
+    $ npm run test:coverage
+
+## Linting/Rules
+
+    $ npm run lint
