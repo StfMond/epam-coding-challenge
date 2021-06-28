@@ -5,7 +5,6 @@
 ## Requirements
 
 Allow to recieve commands to move folders
-Tech - VanillaJs - Nodejs
 
 ## Install
 
